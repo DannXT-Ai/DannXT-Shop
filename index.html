@@ -25,6 +25,16 @@
       }
     }
 
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent }
+      50% { border-color: white; }
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -54,15 +64,25 @@
     }
 
     h1 {
-      font-size: 3em;
+      font-size: 2.8em;
       color: #00ffe1;
       animation: glow 3s infinite ease-in-out, fadeInUp 1.2s ease forwards;
+      margin-bottom: 15px;
+    }
+
+    .typing {
+      font-size: 1.2em;
+      border-right: 2px solid white;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(30, end) forwards, blink .75s step-end infinite;
       margin-bottom: 20px;
     }
 
     h2.glow {
-      margin-top: 30px;
-      font-size: 2em;
+      margin-top: 25px;
+      font-size: 1.7em;
       color: #00ffe1;
       animation: glow 3s infinite ease-in-out, fadeInUp 1.5s ease forwards;
     }
@@ -72,7 +92,7 @@
     }
 
     p {
-      font-size: 1.3em;
+      font-size: 1.2em;
       margin: 10px 0;
     }
 
@@ -89,26 +109,27 @@
       margin: 5px 0;
     }
 
-    .wa-button {
-      margin-top: 40px;
-      padding: 14px 35px;
+    .wa-button, .music-button {
+      margin-top: 25px;
+      padding: 14px 30px;
       background-color: #25D366;
       color: #fff;
       text-decoration: none;
       border-radius: 30px;
-      font-size: 1.2em;
+      font-size: 1.1em;
       transition: 0.3s ease;
-      box-shadow: 0 0 15px #25D366;
+      box-shadow: 0 0 12px #25D366;
       display: inline-block;
       animation: fadeInUp 1.8s ease forwards;
+      margin-bottom: 10px;
     }
 
-    .wa-button:hover {
+    .wa-button:hover, .music-button:hover {
       background-color: #1da851;
     }
 
     .sosmed {
-      margin-top: 25px;
+      margin-top: 20px;
       font-size: 1em;
       color: #ccc;
     }
@@ -140,11 +161,10 @@
 <body>
   <div class="overlay">
     <h1>TOKO DANXT</h1>
-    <p>💬 Sewa Bot WhatsApp Harian cuma <strong>1-20K</strong></p>
-    <p>♾️ Permanen hanya <strong>30K</strong></p>
-    <p>📆 1 Hari: 1K</p>
-    <p>📆 10 Hari: 10K</p>
-    <p>📆 60 Hari: 20K</p>
+    <div class="typing">Jual & Sewa Bot WhatsApp Termurah 🔥</div>
+
+    <p>💬 Harian cuma <strong>1-20K</strong> | Permanen cuma <strong>30K</strong></p>
+    <p>📆 1 Hari: 1K — 10 Hari: 10K — 60 Hari: 20K</p>
 
     <h2 class="glow">FITUR?</h2>
     <p>✅ Bisa Tanya Apa Aja!</p>
@@ -165,15 +185,23 @@
       <a href="https://youtube.com/@dannnn123" target="_blank">▶️ YouTube</a>
     </div>
 
-    <a href="https://wa.me/6289616331000" class="wa-button">Chat Sekarang</a>
+    <a href="https://wa.me/6289616331000" class="wa-button">💬 Chat Sekarang</a>
+    <button onclick="playMusic(this)" class="music-button">▶️ Putar Musik</button>
 
-    <!-- Musik otomatis diputar -->
-    <audio autoplay loop>
+    <audio id="musik" loop>
       <source src="sound.mp3" type="audio/mpeg">
       Browser kamu tidak mendukung audio.
     </audio>
   </div>
 
   <footer>&copy; 2025 TOKO DANXT</footer>
+
+  <script>
+    function playMusic(button) {
+      var audio = document.getElementById("musik");
+      audio.play();
+      button.style.display = "none";
+    }
+  </script>
 </body>
 </html>
