@@ -7,8 +7,10 @@
   <meta name="description" content="Sewa Bot WhatsApp Termurah - TOKO DANXT. Mulai 1K!">
   <meta name="keywords" content="sewa bot, jual panel, bot whatsapp, toko danxt">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
     :root {
       --neon: #00fff7;
       --bg-dark: rgba(0, 0, 0, 0.65);
@@ -16,26 +18,64 @@
       --text-dark: #ffffff;
       --text-light: #000000;
     }
+
     body {
       margin: 0;
       font-family: 'Orbitron', sans-serif;
-      background: url("bg.jpg") center/cover no-repeat fixed;
+      background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+      background-size: 300% 300%;
+      animation: gradientMove 20s ease infinite;
       color: var(--text-dark);
       transition: 0.5s ease;
     }
+
     body.light-mode {
       color: var(--text-light);
+      background: #f5f5f5;
     }
+
+    @keyframes rainbowText {
+      0% { color: red; }
+      16% { color: orange; }
+      32% { color: yellow; }
+      48% { color: green; }
+      64% { color: blue; }
+      80% { color: indigo; }
+      100% { color: violet; }
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7; }
+      100% { box-shadow: 0 0 30px #00ffff, 0 0 60px #00fff7; }
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulsePromo {
+      0% { text-shadow: 0 0 10px red; }
+      50% { text-shadow: 0 0 20px orange; }
+      100% { text-shadow: 0 0 10px red; }
+    }
+
     #particles-js {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
     }
-    .marquee, .container, footer {
-      position: relative;
-      z-index: 1;
-    }
+
     .marquee {
       background: black;
       color: var(--neon);
@@ -43,8 +83,14 @@
       text-align: center;
       font-size: 1em;
       box-shadow: 0 0 20px var(--neon);
+      animation: pulsePromo 2s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
     }
+
     .container {
+      position: relative;
+      z-index: 1;
       background: var(--bg-dark);
       backdrop-filter: blur(10px);
       margin: 50px auto;
@@ -52,14 +98,15 @@
       border-radius: 20px;
       width: 90%;
       max-width: 600px;
-      box-shadow: 0 0 25px var(--neon);
+      animation: glow 4s infinite alternate;
     }
-    h1 {
-      color: var(--neon);
-      text-shadow: 0 0 15px var(--neon);
+
+    h1.rainbow {
+      animation: rainbowText 8s linear infinite, glow 2s ease-in-out infinite alternate;
+      text-shadow: 0 0 20px white, 0 0 40px #00fff7;
       font-size: 2.8em;
-      margin-bottom: 10px;
     }
+
     .typing {
       overflow: hidden;
       white-space: nowrap;
@@ -69,20 +116,28 @@
       animation: typing 4s steps(40, end) forwards, blink .8s infinite;
       font-size: 1.2em;
     }
+
     @keyframes typing {
       from { width: 0 }
       to { width: 100% }
     }
+
     @keyframes blink {
       0%, 100% { border-color: transparent }
       50% { border-color: white }
     }
-    ul { list-style: none; padding: 0; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
     ul li {
       color: var(--neon);
       text-shadow: 0 0 6px var(--neon);
       margin: 5px 0;
     }
+
     .btn, .music-btn, .toggle-btn {
       background: var(--neon);
       color: black;
@@ -96,9 +151,16 @@
       cursor: pointer;
       transition: 0.3s ease;
     }
+
     .btn:hover, .music-btn:hover, .toggle-btn:hover {
       background: #00cfcf;
     }
+
+    .music-btn::after {
+      content: ' 🎶';
+      animation: pulse 2s infinite;
+    }
+
     .sosmed a {
       margin: 0 10px;
       color: var(--neon);
@@ -106,6 +168,7 @@
       font-size: 1.1em;
       text-shadow: 0 0 5px var(--neon);
     }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -116,17 +179,17 @@
 </head>
 <body>
   <div id="particles-js"></div>
-
   <div class="marquee">🔥 PROMO: Sewa bot mulai 1K! | Permanen hanya 30K! | Chat WA: 6289616331000 🔥</div>
 
   <div class="container">
-    <h1>TOKO DANXT</h1>
+    <h1 class="rainbow">TOKO DANXT</h1>
+    <p><strong>✅ Trusted Seller | ⏱️ Fast Respon | 💯 100% Aman</strong></p>
     <div class="typing">Jual & Sewa Bot WhatsApp Termurah 🔥</div>
 
     <p>💬 Harian: 1K–20K | Permanen: 30K</p>
     <p>📆 1 Hari: 1K — 10 Hari: 10K — 60 Hari: 20K</p>
 
-    <h2>FITUR UTAMA</h2>
+    <h2>💥 FITUR UTAMA</h2>
     <ul>
       <li>Jaga Grub</li>
       <li>Brat</li>
@@ -136,13 +199,13 @@
       <li>Dan lainnya, bisa ditanyakan ke admin</li>
     </ul>
 
-    <h2>Fitur Baru 🔥</h2>
+    <h2>🧩 Fitur Baru 🔥</h2>
     <ul>
       <li>.iqc (SS-an chat iPhone)</li>
       <li>.tosdmtinggi (Ubah foto jadi SDM tinggi 🤓)</li>
     </ul>
 
-    <h2 style="margin-top: 35px;">LIST JUALAN PANEL DANNXT</h2>
+    <h2>🖥️ LIST PANEL DANNXT</h2>
     <ul>
       <li>1GB — 1K</li>
       <li>2GB — 1,5K</li>
@@ -157,21 +220,11 @@
       <li><strong>UNLI? 12K 🔥</strong></li>
     </ul>
 
-    <h2>PAYMENT 💳</h2>
+    <h2>💳 PAYMENT</h2>
     <ul>
       <li>DANA</li>
       <li>QRIS (+500P)</li>
     </ul>
-
-    <h2>FAQ ❓</h2>
-    <p><strong>Q:</strong> Gimana cara beli?</p>
-    <p><strong>A:</strong> Klik tombol Chat Sekarang dan hubungi admin lewat WhatsApp.</p>
-    <p><strong>Q:</strong> Bisa custom bot sendiri?</p>
-    <p><strong>A:</strong> Bisa! Silakan tanya langsung ke admin.</p>
-
-    <h2>Testimoni 🗣️</h2>
-    <blockquote>"Botnya mantap, murah dan cepat!" - @user123</blockquote>
-    <blockquote>"Panel stabil dan murah. Recomended seller!" - @pengguna</blockquote>
 
     <div class="sosmed">
       <a href="https://instagram.com/danzfnx" target="_blank">📷 Instagram</a>
@@ -180,18 +233,19 @@
     </div>
 
     <a href="https://wa.me/6289616331000" class="btn">💬 Chat Sekarang</a>
-    <button onclick="playMusic(this)" class="music-btn">▶️ Putar Musik</button>
-    <button onclick="toggleMode()" class="toggle-btn">🌗 Toggle Mode</button>
+    <button onclick="playMusic(this)" class="music-btn">▶️ Musik</button>
+    <button onclick="toggleMode()" class="toggle-btn">🌗 Mode Gelap/Terang</button>
 
     <audio id="musik" loop>
       <source src="sound.mp3" type="audio/mpeg">
-      Browser kamu tidak mendukung audio.
     </audio>
 
-    <p style="margin-top: 30px; color: #00fff7; text-shadow: 0 0 8px #00fff7;">✨ Terimakasih Yang Sudah Beli Di Toko Kami ✨</p>
+    <p style="margin-top: 30px; color: #00fff7; text-shadow: 0 0 8px #00fff7;">
+      ✨ Terimakasih Yang Sudah Beli Di Toko Kami ✨
+    </p>
   </div>
 
-  <footer>&copy; 2025 TOKO DANXT. All rights reserved.</footer>
+  <footer>&copy; 2025 TOKO DANXT</footer>
 
   <script>
     function playMusic(button) {
@@ -236,6 +290,14 @@
         }
       },
       "retina_detect": true
+    });
+
+    ScrollReveal().reveal('.container', {
+      delay: 300,
+      distance: '20px',
+      duration: 800,
+      origin: 'bottom',
+      reset: true
     });
   </script>
 </body>
