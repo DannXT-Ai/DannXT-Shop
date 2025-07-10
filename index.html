@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TOKO DANXT</title>
   <style>
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        text-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+      }
+      50% {
+        text-shadow: 0 0 20px #00ffe1, 0 0 30px #00ffe1;
+      }
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -30,12 +50,13 @@
       max-width: 90%;
       width: 600px;
       box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      animation: fadeInUp 1s ease forwards;
     }
 
     h1 {
       font-size: 3em;
       color: #00ffe1;
-      text-shadow: 0 0 15px #00ffe1;
+      animation: glow 2s infinite, fadeInUp 1.2s ease forwards;
       margin-bottom: 20px;
     }
 
@@ -43,7 +64,11 @@
       margin-top: 30px;
       font-size: 2em;
       color: #00ffe1;
-      text-shadow: 0 0 10px #00ffe1;
+      animation: glow 2s infinite, fadeInUp 1.5s ease forwards;
+    }
+
+    p, ul, .sosmed {
+      animation: fadeInUp 1.5s ease forwards;
     }
 
     p {
@@ -75,6 +100,7 @@
       transition: 0.3s ease;
       box-shadow: 0 0 15px #25D366;
       display: inline-block;
+      animation: fadeInUp 1.8s ease forwards;
     }
 
     .wa-button:hover {
@@ -87,8 +113,18 @@
       color: #ccc;
     }
 
-    .sosmed p {
-      margin: 5px 0;
+    .sosmed a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #00ffe1;
+      font-size: 1.2em;
+      text-decoration: none;
+      text-shadow: 0 0 5px #00ffe1;
+      transition: transform 0.3s ease;
+    }
+
+    .sosmed a:hover {
+      transform: scale(1.2);
     }
 
     footer {
@@ -124,9 +160,9 @@
     </ul>
 
     <div class="sosmed">
-      <p>📷 IG: @danzfnx</p>
-      <p>🎵 TikTok: @dandandan.6</p>
-      <p>▶️ YouTube: @dannn123</p>
+      <a href="https://instagram.com/danzfnx" target="_blank">📷 Instagram</a>
+      <a href="https://tiktok.com/@dandandan.6" target="_blank">🎵 TikTok</a>
+      <a href="https://youtube.com/@dannn123" target="_blank">▶️ YouTube</a>
     </div>
 
     <a href="https://wa.me/6289616331000" class="wa-button">Chat Sekarang</a>
