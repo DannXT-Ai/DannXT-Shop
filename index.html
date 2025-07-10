@@ -4,70 +4,95 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TOKO DANXT</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
     :root {
-      --primary: #00ffe1;
-      --glass: rgba(0, 0, 0, 0.5);
-      --shadow: 0 0 20px rgba(0, 255, 225, 0.4);
+      --neon: #00fff7;
+      --bg-dark: rgba(0, 0, 0, 0.65);
+      --bg-light: rgba(255, 255, 255, 0.85);
+      --text-dark: #ffffff;
+      --text-light: #000000;
     }
 
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Orbitron', sans-serif;
       background: url("bg.jpg") center/cover no-repeat fixed;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
+      color: var(--text-dark);
+      transition: 0.5s ease;
+    }
+
+    body.light-mode {
+      color: var(--text-light);
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+    }
+
+    .marquee, .container, footer {
+      position: relative;
+      z-index: 1;
     }
 
     .marquee {
-      width: 100%;
-      background: #000;
-      color: var(--primary);
-      padding: 10px 0;
-      font-weight: bold;
+      background: black;
+      color: var(--neon);
+      padding: 12px 0;
       text-align: center;
-      box-shadow: var(--shadow);
+      font-size: 1em;
+      box-shadow: 0 0 20px var(--neon);
     }
 
     .container {
-      margin-top: 50px;
-      background: var(--glass);
+      background: var(--bg-dark);
       backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 25px;
-      box-shadow: var(--shadow);
-      text-align: center;
+      margin: 50px auto;
+      padding: 40px 30px;
+      border-radius: 20px;
       width: 90%;
       max-width: 600px;
-      animation: fadeInUp 1.2s ease forwards;
+      box-shadow: 0 0 25px var(--neon);
+      color: var(--text-dark);
+      transition: 0.5s ease;
+    }
+
+    body.light-mode .container {
+      background: var(--bg-light);
+      color: var(--text-light);
+      box-shadow: 0 0 10px #aaa;
     }
 
     h1 {
+      color: var(--neon);
+      text-shadow: 0 0 15px var(--neon);
       font-size: 2.8em;
-      color: var(--primary);
-      text-shadow: 0 0 10px var(--primary);
-      animation: glow 3s infinite ease-in-out;
+      margin-bottom: 10px;
     }
 
     .typing {
-      font-size: 1.2em;
-      border-right: 2px solid white;
-      white-space: nowrap;
       overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid white;
       width: 0;
       margin: 15px auto 25px;
-      animation: typing 4s steps(30, end) forwards, blink .75s step-end infinite;
+      animation: typing 4s steps(40, end) forwards, blink .8s infinite;
+      font-size: 1.2em;
     }
 
-    p, ul {
-      font-size: 1.1em;
-      margin: 10px 0;
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent }
+      50% { border-color: white }
     }
 
     ul {
@@ -76,109 +101,74 @@
     }
 
     ul li {
-      color: var(--primary);
-      text-shadow: 0 0 6px var(--primary);
+      color: var(--neon);
+      text-shadow: 0 0 6px var(--neon);
       margin: 5px 0;
     }
 
-    .button, .music-button {
-      display: inline-block;
-      margin: 15px 10px 10px;
-      padding: 12px 25px;
-      font-size: 1em;
-      background: var(--primary);
-      color: #000;
+    .btn, .music-btn, .toggle-btn {
+      background: var(--neon);
+      color: black;
       border: none;
       border-radius: 30px;
-      cursor: pointer;
+      padding: 12px 25px;
+      margin: 15px 10px;
+      font-size: 1em;
       font-weight: bold;
-      box-shadow: 0 0 15px var(--primary);
-      transition: transform 0.3s ease, background 0.3s ease;
+      box-shadow: 0 0 15px var(--neon);
+      cursor: pointer;
+      transition: 0.3s ease;
     }
 
-    .button:hover, .music-button:hover {
-      transform: scale(1.05);
-      background: #00ccb3;
-    }
-
-    .sosmed {
-      margin-top: 20px;
+    .btn:hover, .music-btn:hover, .toggle-btn:hover {
+      background: #00cfcf;
     }
 
     .sosmed a {
       margin: 0 10px;
-      color: var(--primary);
-      font-size: 1.2em;
+      color: var(--neon);
       text-decoration: none;
-      text-shadow: 0 0 6px var(--primary);
+      font-size: 1.1em;
+      text-shadow: 0 0 5px var(--neon);
     }
 
     footer {
-      margin-top: auto;
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
       color: #ccc;
     }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes glow {
-      0%, 100% {
-        text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
-      }
-      50% {
-        text-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
-      }
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink {
-      0%, 100% { border-color: transparent }
-      50% { border-color: white; }
-    }
-
-    @media (max-width: 500px) {
-      h1 { font-size: 2em; }
-      .typing { font-size: 1em; }
-    }
   </style>
 </head>
 <body>
-  <div class="marquee">🔥 Promo: Sewa bot mulai 1K! | Permanen hanya 30K! | Chat WA: 6289616331000 🔥</div>
+  <div id="particles-js"></div>
+
+  <div class="marquee">🔥 PROMO: Sewa bot mulai 1K! | Permanen hanya 30K! | Chat WA: 6289616331000 🔥</div>
 
   <div class="container">
     <h1>TOKO DANXT</h1>
     <div class="typing">Jual & Sewa Bot WhatsApp Termurah 🔥</div>
 
-    <p>💬 Harian cuma <strong>1-20K</strong> | Permanen hanya <strong>30K</strong></p>
+    <p>💬 Harian: 1K–20K | Permanen: 30K</p>
     <p>📆 1 Hari: 1K — 10 Hari: 10K — 60 Hari: 20K</p>
 
-    <h2 style="color: var(--primary); margin-top: 25px;">FITUR?</h2>
-    <p>✅ Bisa Tanya Apa Aja!</p>
-
+    <h2>FITUR UTAMA</h2>
     <ul>
       <li>Jaga Grub</li>
       <li>Brat</li>
       <li>Cari Stiker (Sticker.ly)</li>
       <li>RPG</li>
       <li>Fun</li>
-      <li>Dan lain-lain, tanya ke nomor yang tertera</li>
+      <li>Dan lainnya, bisa ditanyakan ke admin</li>
     </ul>
+
+    <h2>Fitur Baru 🔥</h2>
+    <ul>
+      <li>.iqc (SS-an chat iPhone)</li>
+      <li>.tosdmtinggi (Ubah foto jadi SDM tinggi 🤓)</li>
+    </ul>
+
+    <p><strong>Masih banyak lagi!</strong><br>Penasaran? Tanya langsung ke admin lewat WhatsApp!</p>
 
     <div class="sosmed">
       <a href="https://instagram.com/danzfnx" target="_blank">📷 Instagram</a>
@@ -186,13 +176,16 @@
       <a href="https://youtube.com/@dannnn123" target="_blank">▶️ YouTube</a>
     </div>
 
-    <a href="https://wa.me/6289616331000" class="button">💬 Chat Sekarang</a>
-    <button onclick="playMusic(this)" class="music-button">▶️ Putar Musik</button>
+    <a href="https://wa.me/6289616331000" class="btn">💬 Chat Sekarang</a>
+    <button onclick="playMusic(this)" class="music-btn">▶️ Putar Musik</button>
+    <button onclick="toggleMode()" class="toggle-btn">🌗 Toggle Mode</button>
 
     <audio id="musik" loop>
       <source src="sound.mp3" type="audio/mpeg">
       Browser kamu tidak mendukung audio.
     </audio>
+
+    <p style="margin-top: 30px; color: #00fff7; text-shadow: 0 0 8px #00fff7;">✨ Terimakasih Yang Sudah Beli Di Toko Kami ✨</p>
   </div>
 
   <footer>&copy; 2025 TOKO DANXT. All rights reserved.</footer>
@@ -203,6 +196,44 @@
       audio.play();
       button.style.display = "none";
     }
+
+    function toggleMode() {
+      document.body.classList.toggle("light-mode");
+    }
+
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 50 },
+        "color": { "value": "#00fff7" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.6 },
+        "size": { "value": 3 },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#00fff7",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "out_mode": "bounce"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 100 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
   </script>
 </body>
 </html>
